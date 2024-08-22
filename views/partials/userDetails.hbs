@@ -19,3 +19,15 @@
     <label for="">Login:</label>
     <input type="checkbox" checked={{isLogin}} disabled readonly />
 </div>
+
+{{#ExCompare posts '>' 100}}
+  <p>Tienes más de 100 publicaciones</p>
+{{else}}
+  <p>Tienes menos de 100 publicaciones</p>
+{{/ExCompare}}
+
+{{#ExCompare followers '<=' 2000}}
+  <p>Tienes menos de 2,000 publicaciones</p>
+{{else}}
+  <p>Tienes más de 2,000 seguidores</p>
+{{/ExCompare}}
