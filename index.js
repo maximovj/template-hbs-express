@@ -14,7 +14,9 @@ app.use(morgan('dev'));
 // Crear motor de plantilla 
 const hbs = create({
     extname: '.hbs',
-    defaultLayout: false,
+    defaultLayout: 'main',
+    layoutsDir: 'views/layouts',
+    partialsDir: 'views/partials',
 });
 
 // Configurar handlebars como motor de plantilla
