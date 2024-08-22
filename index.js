@@ -29,6 +29,34 @@ app.get('/', (req, res) => {
     return res.render('home');
 });
 
+app.get('/projects', (req, res) => {
+    return res.render('projects', {
+        title_page: 'Proyectos',
+        projects: [
+            { id: 0, title: 'Proyecto de NodeJS', description: 'App de notas', tags: ['react', 'js'] },
+            { id: 1, title: 'Proyecto de Laravel', description: 'App de notas', tags: ['laravel', 'php', 'laravel backpack'] },
+            { id: 2, title: 'Proyecto de SpringBoot', description: 'API de empleados', tags: ['springboot'] },
+        ]
+
+    });
+});
+
+app.get('/profile', (req, res) => {
+    return res.render('profile', {
+        title_page: '',
+        user: {
+            name: 'Diego',
+            lastname: 'Pérez',
+            age: 31,
+            genere: 'Masculino',
+            posts: 110,
+            followers: 2400,
+            isAdmin: false,
+            isLive: true,
+        }
+    });
+});
+
 // Configurar archivos estáticos 
 app.use(express.static('public'));
 app.use('/static', express.static('public'));

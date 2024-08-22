@@ -1,0 +1,20 @@
+<h1>Información de perfil</h1>
+
+{{#with user}}
+    <div>
+        <label for="">Nombre:</label>
+        <input type="text" value={{name}} readonly disabled />
+    </div>
+    <div>
+        <label for="">Apellido:</label>
+        <input type="text" value={{lastname}} readonly disabled />
+    </div>
+    <div>
+        <label for="">Edad:</label>
+        <input type="number" value={{age}} readonly disabled />
+    </div>
+    <div>
+        <label for="">Genero:</label>
+        <input type="text" value={{genere}} readonly disabled />
+    </div>
+{{/with}}

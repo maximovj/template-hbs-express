@@ -1,0 +1,7 @@
+<h1>Lista de proyectos</h1>
+
+<ul>
+    {{#each projects}}
+        <li> <small>{{@key}} {{@index}}</small> <b>{{title}}</b>  - {{description}} || {{tags}} </li>
+    {{/each}}
+</ul>
