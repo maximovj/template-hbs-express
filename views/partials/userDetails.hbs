@@ -1,0 +1,21 @@
+<h4>Configuración avanzada</h4>
+{{#unless isAdmin}}
+  <div>
+    <label for="">Admin:</label>
+    <input type="text" value="off" disabled readonly />
+  </div>
+{{/unless}}
+
+<div>
+  <label for="">Vivo:</label>
+  {{#if isLive}}
+    <input type="text" value="on" disabled readonly />
+  {{else}}
+    <input type="text" value="off" disabled readonly />
+  {{/if}}
+</div>
+
+<div>
+    <label for="">Login:</label>
+    <input type="checkbox" checked={{isLogin}} disabled readonly />
+</div>

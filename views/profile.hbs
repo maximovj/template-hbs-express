@@ -17,4 +17,9 @@
         <label for="">Genero:</label>
         <input type="text" value={{genere}} readonly disabled />
     </div>
+    {{>userDetails 
+        isAdmin=this.isAdmin
+        isLogin=this.isLogin
+        isLive=this.isLive
+    }}
 {{/with}}

@@ -52,7 +52,8 @@ app.get('/profile', (req, res) => {
             posts: 110,
             followers: 2400,
             isAdmin: false,
-            isLive: true,
+            isLive: false,
+            isLogin: true,
         }
     });
 });
