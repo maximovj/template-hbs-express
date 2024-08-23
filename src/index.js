@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const { create } = require('express-handlebars');
 const app = express();
 const routes = require('./routes.js');
-const helpers = require('./helpers.js');
+const helpers = require('./sync_helpers.js');
 const path = require('path');
 
 // Configurar variables de entorno
