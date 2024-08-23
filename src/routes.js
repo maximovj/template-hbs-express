@@ -25,7 +25,7 @@ router.get('/profile', (req, res) => {
             name: 'Diego',
             lastname: 'Pérez',
             age: 31,
-            genere: 'Masculino',
+            sex: 'Masculino',
             posts: 70,
             followers: 2400,
             isAdmin: false,
