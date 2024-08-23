@@ -12,6 +12,7 @@ app.set('url', process.env.APP_URL);
 app.use(morgan('dev'));
 
 // Crear motor de plantilla 
+const blocks = {};
 const hbs = create({
     extname: '.hbs',
     defaultLayout: 'main',
@@ -30,6 +31,21 @@ const hbs = create({
                 case '===': result = valueA === valueB; break;
             }
             return result ? options.fn(this) : options.inverse(this);
+        },
+        yield: function (name, options) {
+            if (!blocks[name]) {
+                blocks[name] = [];
+            }
+
+            if (options.fn) {
+                blocks[name].push(options.fn(this));
+            }
+            return null;
+        },
+        yieldFor: function (name) {
+            const val = (blocks[name] || []).join("\n");
+            blocks[name] = [];
+            return val;
         }
     }
 });
@@ -41,7 +57,9 @@ app.set('views', 'views');
 
 // Definir rutas de endpoints
 app.get('/', (req, res) => {
-    return res.render('home');
+    return res.render('home', {
+        title_page: 'Inicio',
+    });
 });
 
 app.get('/projects', (req, res) => {
@@ -52,13 +70,12 @@ app.get('/projects', (req, res) => {
             { id: 1, title: 'Proyecto de Laravel', description: 'App de notas', tags: ['laravel', 'php', 'laravel backpack'] },
             { id: 2, title: 'Proyecto de SpringBoot', description: 'API de empleados', tags: ['springboot'] },
         ]
-
     });
 });
 
 app.get('/profile', (req, res) => {
     return res.render('profile', {
-        title_page: '',
+        title_page: 'Perfil',
         user: {
             name: 'Diego',
             lastname: 'Pérez',
