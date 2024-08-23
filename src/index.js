@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const { create } = require('express-handlebars');
 const app = express();
+const path = require('path');
 
 // Configurar variables de entorno
 app.set('port', process.env.PORT || process.env.APP_PORT || 4800);
@@ -16,8 +17,8 @@ const blocks = {};
 const hbs = create({
     extname: '.hbs',
     defaultLayout: 'main',
-    layoutsDir: 'views/layouts',
-    partialsDir: 'views/partials',
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),
+    partialsDir: path.join(__dirname, 'views', 'partials'),
     helpers: {
         ExCompare: (valueA, operator, valueB, options) => {
             let result = false;
@@ -53,7 +54,7 @@ const hbs = create({
 // Configurar handlebars como motor de plantilla
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
-app.set('views', 'views');
+app.set('views', path.join(__dirname, 'views'));
 
 // Definir rutas de endpoints
 app.get('/', (req, res) => {
@@ -91,8 +92,8 @@ app.get('/profile', (req, res) => {
 });
 
 // Configurar archivos estáticos 
-app.use(express.static('public'));
-app.use('/static', express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // Levantar el servidor
 app.listen(app.get('port'), () => {
